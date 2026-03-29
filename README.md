@@ -130,14 +130,14 @@ tastes don't match the majority of the dataset.
 ### Phase 3: Default Profile Run
 ![Single Profile Run](images/singleprofilerun.png)
 
-### Phase 4: High-Energy Pop
+### Phase 4.1: High-Energy Pop
 ![High Energy Pop](images/highenergypop.png)
 
-### Phase 4: Chill Lofi
+### Phase 4.2: Chill Lofi
 ![Chill Lofi](images/chill_lofi.png)
 
-### Phase 4: Intense Rock
+### Phase 4.3: Intense Rock
 ![Intense Rock](images/intenserock.png)
 
-### Phase 4: Conflicting Profile (sad + high energy)
+### Phase 4.4: Conflicting Profile (sad + high energy)
 ![Conflicting Profile](images/conflicting_sad_high_energy.png)
