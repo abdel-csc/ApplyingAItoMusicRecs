@@ -62,6 +62,7 @@ python -m src.main
 ## Sample Interactions
 
 ### High-Energy Pop Profile
+```
 ==================================================
 Profile: High-Energy Pop
 Confetti Rain - Score: 4.00 | Confidence: 89%
@@ -74,8 +75,10 @@ AI says:
 These songs are an excellent match. All five are pop tracks with a happy
 mood and energy levels clustered tightly around 0.80, matching the user's
 target almost exactly. Genre and mood both align, resulting in near-perfect scores.
+```
 
 ### Chill Lofi Profile
+```
 ==================================================
 Profile: Chill Lofi
 Library Rain - Score: 4.00 | Confidence: 89%
@@ -86,7 +89,9 @@ AI says:
 These lofi tracks are a strong match. Their low energy levels closely mirror
 the target of 0.35, and all carry a chill mood that aligns with the listener's
 preference for relaxed, background-style music.
+```
 ### Conflicting Profile (sad + high energy)
+```
 ==================================================
 Profile: Conflicting (sad + high energy)
 Power Surge - Score: 3.00 | Confidence: 67%
@@ -95,6 +100,7 @@ AI says:
 These songs match on genre and energy but not on mood. The listener prefers
 sad music, but no pop songs in the catalog carry that mood, so the system
 defaulted to energy as the tiebreaker. This is a dataset gap, not a scoring error.
+```
 ---
 
 ## Design Decisions
