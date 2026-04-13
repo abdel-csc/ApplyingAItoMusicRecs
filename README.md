@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ```
 
 3. Create a `.env` file with your Groq API key:
-"GROQ_API_KEY=your_key_here" Why GROQ? I go more deeper as to why in the model card but essentially its similar to Gemini with a lot less restrictions. 
+"GROQ_API_KEY=your_key_here" Why GROQ? I talk about it in my design decisions and model card but essentially its similar to Gemini with a lot less restrictions. 
 4. Run:
 
 ```bash
