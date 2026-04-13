@@ -1,143 +1,135 @@
-# 🎵 Music Recommender Simulation
+# 🎵 Applying AI to Music Recommendations
 
-## Project Summary
+## Base Project
 
+This project extends [VibeSmash](https://github.com/abdel-csc/ai110-module3show-musicrecommendersimulation-starter), a content-based music recommender built in Module 3. The original system scored songs against a user's taste profile using genre, mood, and energy attributes, then returned the top 5 matches with a score breakdown. It had 10 songs and no LLM integration.
 
-This project builds a content-based music recommender system that scores songs 
-against a user's taste profile and returns the top matches. It uses three song 
-attributes (genre, mood, and energy) to calculate a weighted score for each 
-song in the catalog. The system ranks all songs by score and returns the top 5 
-recommendations along with an explanation of why each song was suggested.
+---
 
-## How The System Works
+## What This Version Adds
 
-Each Song in the system has the following features:
-- Genre: musical category (pop, rock, lofi, jazz, etc.)
-- Mood: emotional tone (happy, chill, intense, relaxed, etc.)
-- Energy: a 0.0 to 1.0 scale of intensity
-- Tempo_bpm, valence, danceability, acousticness are all additional attributes
-- Ratings: Crucial for scale, which I touched upon in energy.
+- **LLM Integration via RAG:** The top 5 scored songs plus the user profile are passed to Groq's llama-3.3-70b-versatile model, which generates a natural language explanation of why those songs fit the listener. The scoring system acts as the retriever and the LLM acts as the generator, which is the RAG pattern.
+- **Confidence Scoring:** Each song's raw score is normalized to a percentage (score / 4.5) and displayed alongside the recommendation.
+- **Logging:** Every profile run is written to `recommender.log` using Python's logging module, recording the profile name, top song, and score.
+- **Expanded Dataset:** The catalog was expanded from 10 to 50 songs across 7 genres to reduce imbalance and make retrieval more meaningful.
 
-The `UserProfile` stores:
-- `favorite_genre`: the genre the user prefers
-- `favorite_mood`: the mood the user prefers
-- `target_energy`: the energy level the user wants (0.0 to 1.0)
-- `likes_acoustic`: whether the user prefers acoustic songs
+---
 
-The Recommender's task is to compute a score for each song using this formula:
+## System Architecture
+
+![System Architecture](assets/architecture.png)
+
+---
+
+## How the Scoring Works
+
+Each song is scored against the user profile using this formula:
+
 - Genre match: +2.0 points
 - Mood match: +1.0 point
 - Energy closeness: `1 - abs(song_energy - target_energy)` (between 0.0 and 1.0)
 - Acoustic preference match: +0.5 points (if applicable)
 
-Songs are then sorted from highest to lowest score and the top 5 are returned 
-with an explanation of which factors contributed to each score.
+Maximum possible score: 4.5. Confidence % = score / 4.5.
 
-Data flow:
-User Prefs -> score every song -> sorts by score -> returning the top 5
+---
 
-## Getting Started
+## Setup
 
-### Setup
+1. Clone the repo:
 
-1. Create a virtual environment (optional but recommended):
+```bash
+git clone https://github.com/abdel-csc/ApplyingAItoMusicRecs.git
+cd ApplyingAItoMusicRecs
+```
 
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate      # Mac or Linux
-   .venv\Scripts\activate         # Windows
-
-2. Install dependencies
+2. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Run the app:
+3. Create a `.env` file with your Groq API key:
+"GROQ_API_KEY=your_key_here" Why GROQ? I go more deeper as to why in the model card but essentially its similar to Gemini with a lot less restrictions. 
+4. Run:
 
 ```bash
 python -m src.main
 ```
 
-### Running Tests
+---
 
-Run the starter tests with:
+## Sample Interactions
 
-```bash
-pytest
-```
+### High-Energy Pop Profile
+==================================================
+Profile: High-Energy Pop
+Confetti Rain - Score: 4.00 | Confidence: 89%
+Because: genre match (+2.0), mood match (+1.0), energy similarity (+1.00)
+Heartbeat Pop - Score: 3.99 | Confidence: 89%
+Because: genre match (+2.0), mood match (+1.0), energy similarity (+0.99)
+City Lights - Score: 3.99 | Confidence: 89%
+Because: genre match (+2.0), mood match (+1.0), energy similarity (+0.99)
+AI says:
+These songs are an excellent match. All five are pop tracks with a happy
+mood and energy levels clustered tightly around 0.80, matching the user's
+target almost exactly. Genre and mood both align, resulting in near-perfect scores.
 
-You can add more tests in `tests/test_recommender.py`.
+### Chill Lofi Profile
+==================================================
+Profile: Chill Lofi
+Library Rain - Score: 4.00 | Confidence: 89%
+Because: genre match (+2.0), mood match (+1.0), energy similarity (+1.00)
+Foggy Morning - Score: 3.99 | Confidence: 89%
+Because: genre match (+2.0), mood match (+1.0), energy similarity (+0.99)
+AI says:
+These lofi tracks are a strong match. Their low energy levels closely mirror
+the target of 0.35, and all carry a chill mood that aligns with the listener's
+preference for relaxed, background-style music.
+### Conflicting Profile (sad + high energy)
+==================================================
+Profile: Conflicting (sad + high energy)
+Power Surge - Score: 3.00 | Confidence: 67%
+Because: genre match (+2.0), energy similarity (+1.00)
+AI says:
+These songs match on genre and energy but not on mood. The listener prefers
+sad music, but no pop songs in the catalog carry that mood, so the system
+defaulted to energy as the tiebreaker. This is a dataset gap, not a scoring error.
+---
+
+## Design Decisions
+
+- **Groq over Gemini:** Gemini's free tier was exhausted across all available Google accounts. Groq provided a working free tier with comparable output quality and lower latency.
+- **RAG pattern:** The scoring system serves as the retriever, selecting the most relevant songs, and the LLM generates explanations grounded in that retrieved context. This is the same pattern as DocuBot from Module 4, applied to structured song data instead of documents.
+- **Confidence cap at 4.5:** The maximum possible score is 4.5. Using this as the denominator gives a meaningful upper bound that reflects how well a song can actually match a profile.
+- **50-song dataset:** The original 10-song catalog severely underrepresented most genres. Expanding to 50 songs across 7 genres made retrieval more competitive and LLM explanations more meaningful.
 
 ---
 
-## Experiments You Tried
+## Testing Summary
 
-Here are a few experiments i've tried:
+5 automated tests in `tests/test_recommender.py`:
+tests/test_recommender.py::test_recommend_returns_songs_sorted_by_score PASSED
+tests/test_recommender.py::test_explain_recommendation_returns_non_empty_string PASSED
+tests/test_recommender.py::test_genre_match_boosts_score PASSED
+tests/test_recommender.py::test_recommend_respects_k PASSED
+tests/test_recommender.py::test_acoustic_preference_boosts_acoustic_song PASSED
+5 passed in 0.02s. Hooray!
 
-- **Default pop/happy profile:** Sunrise City ranked #1 with a near-perfect 
-  score of 3.98. Genre, mood, and energy all matched closely. This confirmed 
-  the scoring logic was working correctly.
-
-- **Chill lofi profile:** Library Rain scored a perfect 4.0 because its energy 
-  (0.35) exactly matched the user's target. Showed that energy similarity can 
-  be a tiebreaker when genre and mood both match.
-
-- **Intense rock profile:** Only one rock song exists in the dataset (Storm Runner), 
-  so positions 2-5 were filled by non-rock songs ranked purely by energy. This 
-  revealed a dataset imbalance problem.
-
-- **Conflicting profile (sad mood + high energy):** No song matched both 
-  preferences, so genre (+2.0) dominated. Gym Hero and Sunrise City topped the 
-  list despite being "intense" and "happy." Neither matched the sad mood at all.
-
-  What this taught me especially is that even if we do not get the outcome we're looking for, it's important to constantly conduct tests to arrive at general conclusions. This is especially important when working with AI, or even in the Data science ML field.
-
----
-
-## Limitations and Risks
-
-
-- The catalog only has 10 songs, which is far too small for real use. Genres 
-  like rock (1 song) and jazz (1 song) are severely underrepresented.
-- Genre has the highest weight (+2.0), so it almost always dominates the 
-  ranking even when mood and energy are a better fit.
-- The system has no memory. It treats every recommendation session as if the 
-  user is brand new with no listening history.
-- It does not understand lyrics, language, or cultural context at all.
-- Users who prefer underrepresented genres will consistently get worse 
-  recommendations than pop fans.
+All 5 pass. Tests cover score sorting, explanation output, genre boost behavior, k-limit enforcement, and acoustic preference scoring.
 
 ---
 
 ## Reflection
 
+The most useful moment in this project was the conflicting profile, a user who wanted sad mood but high energy pop. The scoring system returned songs that matched genre and energy but completely missed the mood. What made it interesting was that the LLM then correctly identified this in its explanation, calling out the mood mismatch rather than pretending the results were a good fit. That kind of honest output from the model was more useful than a blindly positive explanation would have been.
 
-Building this recommender made it clear how much a simple scoring formula can 
-shape what users see and what they never see. Genre's +2.0 weight meant it 
-almost always determined the top results, even when other attributes were a 
-better fit. This mirrors a real risk in production systems: whatever features 
-get the highest weight end up defining the user's entire experience, often in 
-ways the user never notices.
+The main technical friction was the Gemini quota wall. The free tier was fully exhausted across multiple Google accounts, which forced a mid-build switch to Groq. That turned out to be the better outcome since Groq's latency is lower and the API is more predictable for this use case.
 
-Bias showed up in an unexpected place, not in the algorithm itself, but in 
-the data. Rock and jazz fans got poor recommendations simply because those 
-genres had fewer songs in the catalog. In a real platform serving millions of 
-users, that kind of imbalance could systematically disadvantage listeners whose 
-tastes don't match the majority of the dataset.
-## Screenshots
+The bigger lesson: genre's +2.0 weight dominates the scoring in almost every case. In a real production system, that kind of feature weighting shapes what millions of users see and never see. The conflicting profile showed that clearly since the system gave confident-looking results that were genuinely a bad match because genre won every time.
 
-### Phase 3: Default Profile Run
-![Single Profile Run](images/singleprofilerun.png)
+---
 
-### Phase 4.1: High-Energy Pop
-![High Energy Pop](images/highenergypop.png)
+## The Verdict
 
-### Phase 4.2: Chill Lofi
-![Chill Lofi](images/chill_lofi.png)
-
-### Phase 4.3: Intense Rock
-![Intense Rock](images/intenserock.png)
-
-### Phase 4.4: Conflicting Profile (sad + high energy)
-![Conflicting Profile](images/conflicting_sad_high_energy.png)
+A project like this shows that as a creator, you're never really quite done with what you make. Especially in the new growing world of AI. Old projects such as these can be modified for optimization.
