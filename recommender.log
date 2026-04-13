@@ -1,0 +1,64 @@
+2026-04-12 20:59:14,896 - Profile: High-Energy Pop | Top song: Confetti Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 20:59:14,988 - Profile: Chill Lofi | Top song: Library Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 20:59:15,078 - Profile: Intense Rock | Top song: Storm Runner | Score: 3.99 | Confidence: 89%
+2026-04-12 20:59:15,234 - Profile: Conflicting (sad + high energy) | Top song: Power Surge | Score: 3.00 | Confidence: 67%
+2026-04-12 21:00:25,752 - Profile: High-Energy Pop | Top song: Confetti Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:00:25,887 - Profile: Chill Lofi | Top song: Library Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:00:26,017 - Profile: Intense Rock | Top song: Storm Runner | Score: 3.99 | Confidence: 89%
+2026-04-12 21:00:26,160 - Profile: Conflicting (sad + high energy) | Top song: Power Surge | Score: 3.00 | Confidence: 67%
+2026-04-12 21:04:00,970 - Profile: High-Energy Pop | Top song: Confetti Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:04:01,080 - Profile: Chill Lofi | Top song: Library Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:04:01,196 - Profile: Intense Rock | Top song: Storm Runner | Score: 3.99 | Confidence: 89%
+2026-04-12 21:04:01,288 - Profile: Conflicting (sad + high energy) | Top song: Power Surge | Score: 3.00 | Confidence: 67%
+2026-04-12 21:05:16,741 - Profile: High-Energy Pop | Top song: Confetti Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:05:16,839 - Profile: Chill Lofi | Top song: Library Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:05:16,943 - Profile: Intense Rock | Top song: Storm Runner | Score: 3.99 | Confidence: 89%
+2026-04-12 21:05:17,054 - Profile: Conflicting (sad + high energy) | Top song: Power Surge | Score: 3.00 | Confidence: 67%
+2026-04-12 21:14:56,021 - Profile: High-Energy Pop | Top song: Confetti Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:14:56,127 - Profile: Chill Lofi | Top song: Library Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:14:56,215 - Profile: Intense Rock | Top song: Storm Runner | Score: 3.99 | Confidence: 89%
+2026-04-12 21:14:56,318 - Profile: Conflicting (sad + high energy) | Top song: Power Surge | Score: 3.00 | Confidence: 67%
+2026-04-12 21:19:15,402 - Profile: High-Energy Pop | Top song: Confetti Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:19:15,501 - Profile: Chill Lofi | Top song: Library Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:19:15,601 - Profile: Intense Rock | Top song: Storm Runner | Score: 3.99 | Confidence: 89%
+2026-04-12 21:19:15,699 - Profile: Conflicting (sad + high energy) | Top song: Power Surge | Score: 3.00 | Confidence: 67%
+2026-04-12 21:21:49,143 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:21:49,144 - Profile: High-Energy Pop | Top song: Confetti Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:21:49,188 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:21:49,189 - Profile: Chill Lofi | Top song: Library Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:21:49,228 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:21:49,229 - Profile: Intense Rock | Top song: Storm Runner | Score: 3.99 | Confidence: 89%
+2026-04-12 21:21:49,268 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:21:49,269 - Profile: Conflicting (sad + high energy) | Top song: Power Surge | Score: 3.00 | Confidence: 67%
+2026-04-12 21:23:00,654 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:23:00,655 - Profile: High-Energy Pop | Top song: Confetti Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:23:00,724 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:23:00,725 - Profile: Chill Lofi | Top song: Library Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:23:00,773 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:23:00,773 - Profile: Intense Rock | Top song: Storm Runner | Score: 3.99 | Confidence: 89%
+2026-04-12 21:23:00,816 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:23:00,816 - Profile: Conflicting (sad + high energy) | Top song: Power Surge | Score: 3.00 | Confidence: 67%
+2026-04-12 21:23:29,201 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:23:29,201 - Profile: High-Energy Pop | Top song: Confetti Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:23:29,260 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:23:29,260 - Profile: Chill Lofi | Top song: Library Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:23:29,322 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:23:29,323 - Profile: Intense Rock | Top song: Storm Runner | Score: 3.99 | Confidence: 89%
+2026-04-12 21:23:29,377 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-12 21:23:29,378 - Profile: Conflicting (sad + high energy) | Top song: Power Surge | Score: 3.00 | Confidence: 67%
+2026-04-12 21:24:08,742 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-12 21:24:08,777 - Profile: High-Energy Pop | Top song: Confetti Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:24:09,350 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-12 21:24:09,352 - Profile: Chill Lofi | Top song: Library Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:24:09,863 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-12 21:24:09,866 - Profile: Intense Rock | Top song: Storm Runner | Score: 3.99 | Confidence: 89%
+2026-04-12 21:24:10,648 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-12 21:24:10,649 - Profile: Conflicting (sad + high energy) | Top song: Power Surge | Score: 3.00 | Confidence: 67%
+2026-04-12 21:24:32,870 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-12 21:24:32,905 - Profile: High-Energy Pop | Top song: Confetti Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:24:33,497 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-12 21:24:33,499 - Profile: Chill Lofi | Top song: Library Rain | Score: 4.00 | Confidence: 89%
+2026-04-12 21:24:34,180 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-12 21:24:34,182 - Profile: Intense Rock | Top song: Storm Runner | Score: 3.99 | Confidence: 89%
+2026-04-12 21:24:34,992 - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-12 21:24:34,994 - Profile: Conflicting (sad + high energy) | Top song: Power Surge | Score: 3.00 | Confidence: 67%
